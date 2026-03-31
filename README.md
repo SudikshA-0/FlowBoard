@@ -154,6 +154,21 @@ http://localhost:5173
 
 ---
 
+## Deploy (GitHub Pages + Backend API)
+
+GitHub Pages can host only the frontend (`client`). The backend (`server`) must be deployed separately (Render/Railway/etc).
+
+1. Deploy backend and copy its URL, e.g. `https://your-api.onrender.com`
+2. In GitHub repo settings, add secret:
+   - `VITE_API_BASE_URL` = `https://your-api.onrender.com/api`
+3. Enable GitHub Pages:
+   - Settings → Pages → Source: **GitHub Actions**
+4. Push to `main` (workflow `.github/workflows/deploy-pages.yml` will build and publish `client/dist`)
+
+For local usage, no change is needed (`/api` proxy in Vite dev server still works).
+
+---
+
 ## 🌐 API Reference
 
 ### Auth
