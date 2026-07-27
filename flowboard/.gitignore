@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+client/dist/
+frontend/client/dist/
+dist/
+
+# Environment variables (secrets)
+.env
+**/.env
+!.env.example
+!**/.env.example
+!**/.env.production.example
+
+# Editor / agent
+.cursor/
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

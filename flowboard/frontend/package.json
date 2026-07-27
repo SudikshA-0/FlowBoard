@@ -1,0 +1,13 @@
+{
+  "name": "flowboard",
+  "version": "1.0.0",
+  "description": "FlowBoard — Full-stack Kanban project management tool",
+  "private": true,
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

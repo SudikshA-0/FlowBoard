@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand tokens (pastel pink / lavender) */
+    --brand: #C084FC;
+    --brand-light: #FFF1F7;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    /* Light theme: pastel + soft girly gradient */
+    @apply font-body antialiased text-slate-900;
+    background: linear-gradient(135deg, #fff1f7 0%, #f5f3ff 45%, #fdf2f8 100%);
+  }
+
+  .dark body {
+    /* Dark theme: minimal, professional, no gradients */
+    @apply bg-[#0F1115] text-slate-100;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-300 dark:bg-slate-700 rounded-full; }
+}
+
+@layer components {
+  /* ── Cards ─────────────────────────────── */
+  .card {
+    @apply rounded-2xl border shadow-card transition-all duration-200;
+    /* Light: soft surfaces with a hint of pink/lavender */
+    @apply bg-white/80 border-pink-100/70 backdrop-blur-[2px];
+    /* Dark: flat dark gray, single accent via rings/focus */
+    @apply dark:bg-[#151821] dark:border-white/10;
+  }
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:shadow-card-hover cursor-pointer;
+  }
+
+  /* ── Buttons ───────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 font-semibold rounded-xl px-4 py-2 text-sm
+           transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 hover:bg-brand-600 text-white shadow-lg shadow-brand-500/25
+           focus:ring-brand-500 active:scale-[0.97];
+  }
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600
+           dark:text-slate-300 border border-slate-200 dark:border-slate-700;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 hover:bg-red-600 text-white focus:ring-red-400;
+  }
+  .btn-icon {
+    @apply p-2 rounded-xl transition-colors text-slate-500 dark:text-slate-400;
+    @apply hover:bg-pink-50 dark:hover:bg-white/5;
+  }
+
+  /* ── Form controls ─────────────────────── */
+  .input {
+    @apply w-full rounded-xl border px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 transition-colors;
+    /* Light */
+    @apply bg-white/70 border-pink-100/70 text-slate-900 placeholder-slate-400;
+    @apply focus:ring-brand-500/25 focus:border-brand-500;
+    /* Dark */
+    @apply dark:bg-[#11141B] dark:border-white/10 dark:text-slate-100 dark:placeholder-slate-500;
+    @apply dark:focus:ring-brand-500/30 dark:focus:border-brand-500;
+  }
+  .label {
+    @apply block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5;
+  }
+
+  /* ── Badge ─────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider
+           px-2 py-0.5 rounded-full;
+  }
+
+  /* ── Priority badges ───────────────────── */
+  .badge-high   { @apply badge bg-red-100   dark:bg-red-900/30   text-red-600   dark:text-red-400; }
+  .badge-medium { @apply badge bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400; }
+  .badge-low    { @apply badge bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400; }
+
+  /* ── Status pills ──────────────────────── */
+  .status-todo       { @apply badge bg-slate-100 dark:bg-slate-800  text-slate-600 dark:text-slate-400; }
+  .status-inprogress { @apply badge bg-blue-100  dark:bg-blue-900/30 text-blue-600  dark:text-blue-400; }
+  .status-done       { @apply badge bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400; }
+
+  /* ── Column ────────────────────────────── */
+  .column {
+    @apply flex flex-col rounded-2xl border min-h-[200px] w-80 flex-shrink-0;
+    /* Light */
+    @apply bg-white/55 border-pink-100/70;
+    /* Dark */
+    @apply dark:bg-[#12151C] dark:border-white/10;
+  }
+
+  /* ── Overlay / Modal ───────────────────── */
+  .overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in;
+    /* Light: slightly softer veil */
+    @apply bg-black/45 backdrop-blur-sm;
+    /* Dark: minimal */
+    @apply dark:bg-black/65;
+  }
+  .modal {
+    @apply card w-full max-w-lg shadow-modal animate-slide-up overflow-hidden;
+  }
+
+  /* ── Nav ───────────────────────────────── */
+  .nav {
+    @apply h-14 backdrop-blur-lg border-b flex items-center px-5 gap-4 sticky top-0 z-30;
+    /* Light */
+    @apply bg-white/75 border-pink-100/70;
+    /* Dark */
+    @apply dark:bg-[#0F1115]/95 dark:border-white/10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    /* Light: girly gradient text */
+    @apply bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent;
+    /* Dark: single accent, no gradients */
+    @apply dark:bg-none dark:text-brand-400;
+  }
+  .scrollbar-hidden { scrollbar-width: none; }
+  .scrollbar-hidden::-webkit-scrollbar { display: none; }
+}
